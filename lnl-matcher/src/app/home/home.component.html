@@ -4,14 +4,46 @@
     <button class="logout" (click)="logout()">Logout</button>
   </header>
   <nav class="tabs">
-    <span class="tab">Match</span>
-    <span class="tab">Match Requests</span>
-    <span class="tab">Schedule</span>
-    <span class="tab">Match History</span>
+    <span class="tab" (click)="setTab('Match')">Match</span>
+    <span class="tab" (click)="setTab('Match Requests')">Match Requests</span>
+    <span class="tab" (click)="setTab('Schedule')">Schedule</span>
+    <span class="tab" (click)="setTab('Match History')">Match History</span>
   </nav>
 
   <main>
-    <!-- blank content -->
+    <div *ngIf="activeTab === 'Match'">
+      <div class="match-card" *ngIf="!showSuccess">
+        <h2>Match 🔥</h2>
+        <label>
+          Select Department
+          <select [(ngModel)]="selectedDept">
+            <option value="" disabled selected>Select Department</option>
+            <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
+          </select>
+        </label>
+
+        <label>Interests</label>
+        <div class="interest-input">
+          <input [(ngModel)]="interest" (keyup.enter)="addInterest()">
+          <button type="button" (click)="addInterest()">Add Interest</button>
+        </div>
+
+        <ul class="interest-list">
+          <li *ngFor="let i of interests">{{ i }}</li>
+        </ul>
+
+        <div class="actions">
+          <button type="button" class="blue" [disabled]="!selectedDept || !interests.length" (click)="submit()">Submit</button>
+        </div>
+      </div>
+
+      <div class="match-card" *ngIf="showSuccess">
+        <p>Lunch and Learn request submitted successfully!</p>
+        <div class="actions">
+          <button type="button" class="blue" (click)="resetForm()">Return</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
