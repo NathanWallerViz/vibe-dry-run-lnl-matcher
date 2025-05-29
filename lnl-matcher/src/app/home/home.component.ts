@@ -83,6 +83,9 @@ export class HomeComponent implements OnInit {
     const historyStored = localStorage.getItem('matchHistory');
     if (historyStored) {
       this.matchHistory = JSON.parse(historyStored);
+    } else {
+      this.matchHistory = this.generateSampleHistory();
+      this.saveHistory();
     }
 
     this.updateHistory();
@@ -225,6 +228,19 @@ export class HomeComponent implements OnInit {
         department: this.departments[(i - 1) % this.departments.length],
         interests: `Interest ${i}`,
         status: 'pending'
+      });
+    }
+    return samples;
+  }
+
+  private generateSampleHistory(): HistoryItem[] {
+    const samples: HistoryItem[] = [];
+    for (let i = 1; i <= 2; i++) {
+      samples.push({
+        name: `Past User ${i}`,
+        department: this.departments[(i - 1) % this.departments.length],
+        interests: `Past Interest ${i}`,
+        scheduleDate: new Date(Date.now() - i * 86400000).toLocaleDateString(),
       });
     }
     return samples;
