@@ -44,42 +44,6 @@
         </div>
       </div>
     </div>
-
-    <div *ngIf="activeTab === 'Match Requests'">
-      <div class="match-card request-card">
-        <h2>Match Requests</h2>
-        <nav class="subtabs">
-          <span class="subtab" [class.active]="requestsTab==='Incoming'" (click)="setRequestsTab('Incoming')">Incoming Requests</span>
-          <span class="subtab" [class.active]="requestsTab==='Pending'" (click)="setRequestsTab('Pending')">Pending Matches</span>
-        </nav>
-        <table class="requests-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Interests</th>
-              <th>Request Date</th>
-              <th>Scheduled Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let r of filteredRequests(); let i = index">
-              <td>{{ r.name }}</td>
-              <td>{{ r.department }}</td>
-              <td>{{ r.interests }}</td>
-              <td>{{ r.requestDate }}</td>
-              <td>{{ r.scheduledDate || '' }}</td>
-              <td class="actions">
-                <button type="button" (click)="openDatePicker(datePickers[i])">Schedule</button>
-                <input type="date" #datePickers style="display:none" (change)="scheduleRequest(r, datePickers.value)">
-                <button type="button" (click)="denyRequest(r)">Deny Request</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
   </main>
 
   <footer>

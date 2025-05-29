@@ -94,41 +94,6 @@ footer {
   justify-content: flex-end;
 }
 
-.request-card {
-  max-width: none;
-}
-
-nav.subtabs {
-  display: flex;
-  margin-bottom: 12px;
-  gap: 16px;
-}
-
-.subtab {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.subtab.active {
-  text-decoration: underline;
-}
-
-.requests-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.requests-table th,
-.requests-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
-
-.requests-table .actions {
-  gap: 4px;
-}
-
 button.blue {
   background-color: #1976d2;
   color: #fff;
