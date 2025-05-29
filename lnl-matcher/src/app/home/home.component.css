@@ -7,11 +7,12 @@
 header {
   background: #1976d2;
   color: white;
-  padding: 16px;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .username {
@@ -27,18 +28,30 @@ main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 nav.tabs {
   display: flex;
   background: #eee;
   padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .tab {
   margin-right: 16px;
   cursor: pointer;
   font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.tab:hover {
+  background-color: #ddd;
 }
 
 footer {
@@ -62,11 +75,11 @@ footer {
 
 .match-card {
   background: #fff;
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  width: 90%;
-  max-width: 600px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   margin-top: 24px;
@@ -98,14 +111,14 @@ button.blue {
   background-color: #1976d2;
   color: #fff;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
 button {
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   background: #fff;
   cursor: pointer;

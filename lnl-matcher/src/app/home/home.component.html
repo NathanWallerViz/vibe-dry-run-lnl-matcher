@@ -1,31 +1,31 @@
 <div class="page">
   <header>
-    <div class="username">{{ userService.username }}</div>
-    <button class="logout" (click)="logout()">Logout</button>
+    <div class="username">👋 {{ userService.username }}</div>
+    <button class="logout" (click)="logout()">Logout 🚪</button>
   </header>
   <nav class="tabs">
-    <span class="tab" (click)="setTab('Match')">Match</span>
-    <span class="tab" (click)="setTab('Match Requests')">Match Requests</span>
-    <span class="tab" (click)="setTab('Pending Requests')">Pending Requests</span>
-    <span class="tab" (click)="setTab('Match History')">Match History</span>
+    <span class="tab" (click)="setTab('Match')">Match 🤝</span>
+    <span class="tab" (click)="setTab('Match Requests')">Requests 📬</span>
+    <span class="tab" (click)="setTab('Pending Requests')">Pending ⏳</span>
+    <span class="tab" (click)="setTab('Match History')">History 📜</span>
   </nav>
 
   <main>
     <div *ngIf="activeTab === 'Match'">
       <div class="match-card" *ngIf="!showMatch">
-        <h2>Match 🔥</h2>
+        <h2>Match 🔥🔥🔥</h2>
         <label>
-          Select Department
+          Select Department 🏢
           <select [(ngModel)]="selectedDept">
             <option value="" disabled selected>Select Department</option>
             <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
           </select>
         </label>
 
-        <label>Interests</label>
+        <label>Interests 🎯</label>
         <div class="interest-input">
           <input [(ngModel)]="interest" (keyup.enter)="addInterest()">
-          <button type="button" (click)="addInterest()">Add Interest</button>
+          <button type="button" (click)="addInterest()">Add Interest ➕</button>
         </div>
 
         <ul class="interest-list">
@@ -33,22 +33,22 @@
         </ul>
 
         <div class="actions">
-          <button type="button" class="blue" [disabled]="!selectedDept || !interests.length" (click)="findMatch()">Find Match</button>
+          <button type="button" class="blue" [disabled]="!selectedDept || !interests.length" (click)="findMatch()">Find Match 🚀</button>
         </div>
       </div>
 
       <div class="match-card" *ngIf="showMatch">
-        <p>You have been matched with:</p>
+        <p>You have been matched with 🥳:</p>
         <div>{{ matchName }} - {{ matchDept }}</div>
         <div class="match-interests">
-          <h4>Matching Interests</h4>
+          <h4>Matching Interests 🌟</h4>
           <ul class="interest-list">
             <li *ngFor="let i of matchingInterests">{{ i }}</li>
           </ul>
         </div>
         <div class="actions">
-          <button type="button" class="blue" (click)="confirmMatch()">Confirm</button>
-          <button type="button" (click)="denyMatch()">Deny</button>
+          <button type="button" class="blue" (click)="confirmMatch()">Confirm ✅</button>
+          <button type="button" (click)="denyMatch()">Deny ❌</button>
         </div>
       </div>
     </div>
@@ -74,8 +74,8 @@
             <td>{{ r.scheduledDate || '' }}</td>
             <td>
               <input #picker type="date" (change)="setSchedule(r, picker.value)" hidden>
-              <button type="button" (click)="openDatePicker(picker)">Schedule</button>
-              <button type="button" (click)="denyRequest(i)">Deny Request</button>
+              <button type="button" (click)="openDatePicker(picker)">Schedule 📅</button>
+              <button type="button" (click)="denyRequest(i)">Deny Request ❌</button>
             </td>
           </tr>
         </tbody>
@@ -102,9 +102,9 @@
             <td>{{ p.status }}</td>
             <td>{{ p.scheduleDate || '' }}</td>
             <td>
-              <button type="button" (click)="setPendingStatus(p, 'accepted')" *ngIf="p.status === 'pending'">Accept</button>
+              <button type="button" (click)="setPendingStatus(p, 'accepted')" *ngIf="p.status === 'pending'">Accept 👍</button>
               <input #ps type="date" (change)="setPendingSchedule(p, ps.value)" hidden>
-              <button type="button" (click)="openDatePicker(ps)">Schedule</button>
+              <button type="button" (click)="openDatePicker(ps)">Schedule 📅</button>
             </td>
           </tr>
         </tbody>
@@ -134,8 +134,8 @@
   </main>
 
   <footer>
-    <div class="left">Contact</div>
-    <div class="center">Vizient L&L Matcher, All rights reserved</div>
-    <div class="right">Help</div>
+    <div class="left">Contact 📞</div>
+    <div class="center">Vizient L&L Matcher, All rights reserved ©️</div>
+    <div class="right">Help ❔</div>
   </footer>
 </div>
