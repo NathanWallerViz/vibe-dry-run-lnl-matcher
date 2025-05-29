@@ -6,7 +6,7 @@
   <nav class="tabs">
     <span class="tab" (click)="setTab('Match')">Match</span>
     <span class="tab" (click)="setTab('Match Requests')">Match Requests</span>
-    <span class="tab" (click)="setTab('Schedule')">Schedule</span>
+    <span class="tab" (click)="setTab('Pending Requests')">Pending Requests</span>
     <span class="tab" (click)="setTab('Match History')">Match History</span>
   </nav>
 
@@ -76,6 +76,35 @@
               <input #picker type="date" (change)="setSchedule(r, picker.value)" hidden>
               <button type="button" (click)="openDatePicker(picker)">Schedule</button>
               <button type="button" (click)="denyRequest(i)">Deny Request</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="activeTab === 'Pending Requests'" class="match-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Interests</th>
+            <th>Status</th>
+            <th>Schedule Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pendingRequests">
+            <td>{{ p.name }}</td>
+            <td>{{ p.department }}</td>
+            <td>{{ p.interests }}</td>
+            <td>{{ p.status }}</td>
+            <td>{{ p.scheduleDate || '' }}</td>
+            <td>
+              <button type="button" (click)="setPendingStatus(p, 'accepted')" *ngIf="p.status === 'pending'">Accept</button>
+              <input #ps type="date" (change)="setPendingSchedule(p, ps.value)" hidden>
+              <button type="button" (click)="openDatePicker(ps)">Schedule</button>
             </td>
           </tr>
         </tbody>

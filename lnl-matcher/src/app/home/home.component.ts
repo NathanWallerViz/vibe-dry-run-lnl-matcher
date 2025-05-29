@@ -10,6 +10,14 @@ interface MatchRequest {
   scheduledDate?: string;
 }
 
+interface PendingRequest {
+  name: string;
+  department: string;
+  interests: string;
+  status: 'pending' | 'accepted' | 'scheduled';
+  scheduleDate?: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -43,6 +51,7 @@ export class HomeComponent implements OnInit {
   matchDept = '';
   matchingInterests: string[] = [];
   requests: MatchRequest[] = [];
+  pendingRequests: PendingRequest[] = [];
 
   constructor(public userService: UserService, private router: Router) {}
 
@@ -53,6 +62,14 @@ export class HomeComponent implements OnInit {
     } else {
       this.requests = this.generateSampleRequests();
       this.saveRequests();
+    }
+
+    const pendingStored = localStorage.getItem('pendingRequests');
+    if (pendingStored) {
+      this.pendingRequests = JSON.parse(pendingStored);
+    } else {
+      this.pendingRequests = this.generateSamplePendingRequests();
+      this.savePendingRequests();
     }
   }
 
@@ -85,6 +102,13 @@ export class HomeComponent implements OnInit {
   }
 
   confirmMatch() {
+    this.pendingRequests.push({
+      name: this.matchName,
+      department: this.matchDept,
+      interests: this.matchingInterests.join(', '),
+      status: 'pending'
+    });
+    this.savePendingRequests();
     this.resetForm();
   }
 
@@ -120,6 +144,21 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('matchRequests', JSON.stringify(this.requests));
   }
 
+  private savePendingRequests() {
+    localStorage.setItem('pendingRequests', JSON.stringify(this.pendingRequests));
+  }
+
+  setPendingStatus(req: PendingRequest, status: 'accepted' | 'scheduled') {
+    req.status = status;
+    this.savePendingRequests();
+  }
+
+  setPendingSchedule(req: PendingRequest, date: string) {
+    req.scheduleDate = date;
+    req.status = 'scheduled';
+    this.savePendingRequests();
+  }
+
   private generateSampleRequests(): MatchRequest[] {
     const samples: MatchRequest[] = [];
     for (let i = 1; i <= 5; i++) {
@@ -128,6 +167,19 @@ export class HomeComponent implements OnInit {
         department: this.departments[(i - 1) % this.departments.length],
         interests: `Interest ${i}`,
         requestDate: new Date().toLocaleDateString(),
+      });
+    }
+    return samples;
+  }
+
+  private generateSamplePendingRequests(): PendingRequest[] {
+    const samples: PendingRequest[] = [];
+    for (let i = 1; i <= 3; i++) {
+      samples.push({
+        name: `Pending User ${i}`,
+        department: this.departments[(i - 1) % this.departments.length],
+        interests: `Interest ${i}`,
+        status: 'pending'
       });
     }
     return samples;
