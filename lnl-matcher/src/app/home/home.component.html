@@ -12,7 +12,7 @@
 
   <main>
     <div *ngIf="activeTab === 'Match'">
-      <div class="match-card" *ngIf="!showSuccess">
+      <div class="match-card" *ngIf="!showMatch">
         <h2>Match 🔥</h2>
         <label>
           Select Department
@@ -33,14 +33,22 @@
         </ul>
 
         <div class="actions">
-          <button type="button" class="blue" [disabled]="!selectedDept || !interests.length" (click)="submit()">Submit</button>
+          <button type="button" class="blue" [disabled]="!selectedDept || !interests.length" (click)="findMatch()">Find Match</button>
         </div>
       </div>
 
-      <div class="match-card" *ngIf="showSuccess">
-        <p>Lunch and Learn request submitted successfully!</p>
+      <div class="match-card" *ngIf="showMatch">
+        <p>You have been matched with:</p>
+        <div>{{ matchName }} - {{ matchDept }}</div>
+        <div class="match-interests">
+          <h4>Matching Interests</h4>
+          <ul class="interest-list">
+            <li *ngFor="let i of matchingInterests">{{ i }}</li>
+          </ul>
+        </div>
         <div class="actions">
-          <button type="button" class="blue" (click)="resetForm()">Return</button>
+          <button type="button" class="blue" (click)="confirmMatch()">Confirm</button>
+          <button type="button" (click)="denyMatch()">Deny</button>
         </div>
       </div>
     </div>

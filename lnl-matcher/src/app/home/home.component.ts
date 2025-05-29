@@ -38,7 +38,10 @@ export class HomeComponent implements OnInit {
   selectedDept = '';
   interest = '';
   interests: string[] = [];
-  showSuccess = false;
+  showMatch = false;
+  matchName = '';
+  matchDept = '';
+  matchingInterests: string[] = [];
   requests: MatchRequest[] = [];
 
   constructor(public userService: UserService, private router: Router) {}
@@ -65,15 +68,28 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  submit() {
-    this.showSuccess = true;
+  findMatch() {
+    const names = ['Alex', 'Sam', 'Charlie', 'Taylor', 'Jordan', 'Robin', 'Casey', 'Riley', 'Jamie', 'Drew'];
+    this.matchName = names[Math.floor(Math.random() * names.length)];
+    this.matchDept = this.departments[Math.floor(Math.random() * this.departments.length)];
+    const shuffled = [...this.interests].sort(() => Math.random() - 0.5);
+    this.matchingInterests = shuffled.slice(0, Math.min(3, this.interests.length));
+    this.showMatch = true;
   }
 
   resetForm() {
     this.selectedDept = '';
     this.interest = '';
     this.interests = [];
-    this.showSuccess = false;
+    this.showMatch = false;
+  }
+
+  confirmMatch() {
+    this.resetForm();
+  }
+
+  denyMatch() {
+    this.resetForm();
   }
 
   logout() {
