@@ -7,7 +7,6 @@ interface MatchRequest {
   department: string;
   interests: string;
   requestDate: string;
-  status: 'pending' | 'accepted' | 'scheduled';
   scheduledDate?: string;
 }
 
@@ -86,14 +85,6 @@ export class HomeComponent implements OnInit {
   }
 
   confirmMatch() {
-    this.requests.push({
-      name: this.matchName,
-      department: this.matchDept,
-      interests: this.matchingInterests.join(', '),
-      requestDate: new Date().toLocaleDateString(),
-      status: 'pending'
-    });
-    this.saveRequests();
     this.resetForm();
   }
 
@@ -117,17 +108,11 @@ export class HomeComponent implements OnInit {
 
   setSchedule(req: MatchRequest, date: string) {
     req.scheduledDate = date;
-    req.status = 'scheduled';
     this.saveRequests();
   }
 
   denyRequest(index: number) {
     this.requests.splice(index, 1);
-    this.saveRequests();
-  }
-
-  acceptRequest(req: MatchRequest) {
-    req.status = 'accepted';
     this.saveRequests();
   }
 
@@ -143,7 +128,6 @@ export class HomeComponent implements OnInit {
         department: this.departments[(i - 1) % this.departments.length],
         interests: `Interest ${i}`,
         requestDate: new Date().toLocaleDateString(),
-        status: 'pending'
       });
     }
     return samples;

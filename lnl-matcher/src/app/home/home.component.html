@@ -5,7 +5,8 @@
   </header>
   <nav class="tabs">
     <span class="tab" (click)="setTab('Match')">Match</span>
-    <span class="tab" (click)="setTab('Pending Requests')">Pending Requests</span>
+    <span class="tab" (click)="setTab('Match Requests')">Match Requests</span>
+    <span class="tab" (click)="setTab('Schedule')">Schedule</span>
     <span class="tab" (click)="setTab('Match History')">Match History</span>
   </nav>
 
@@ -52,7 +53,7 @@
       </div>
     </div>
 
-    <div *ngIf="activeTab === 'Pending Requests'" class="match-card">
+    <div *ngIf="activeTab === 'Match Requests'" class="match-card">
       <table>
         <thead>
           <tr>
@@ -60,8 +61,7 @@
             <th>Department</th>
             <th>Interests</th>
             <th>Request Date</th>
-            <th>Status</th>
-            <th>Schedule Date</th>
+            <th>Scheduled Date</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -71,12 +71,10 @@
             <td>{{ r.department }}</td>
             <td>{{ r.interests }}</td>
             <td>{{ r.requestDate }}</td>
-            <td>{{ r.status }}</td>
             <td>{{ r.scheduledDate || '' }}</td>
             <td>
               <input #picker type="date" (change)="setSchedule(r, picker.value)" hidden>
               <button type="button" (click)="openDatePicker(picker)">Schedule</button>
-              <button type="button" (click)="acceptRequest(r)">Accept</button>
               <button type="button" (click)="denyRequest(i)">Deny Request</button>
             </td>
           </tr>
