@@ -110,6 +110,27 @@
         </tbody>
       </table>
     </div>
+
+    <div *ngIf="activeTab === 'Match History'" class="match-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Interests</th>
+            <th>Schedule Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let h of matchHistory">
+            <td>{{ h.name }}</td>
+            <td>{{ h.department }}</td>
+            <td>{{ h.interests }}</td>
+            <td>{{ h.scheduleDate }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <footer>

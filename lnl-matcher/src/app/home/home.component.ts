@@ -18,6 +18,13 @@ interface PendingRequest {
   scheduleDate?: string;
 }
 
+interface HistoryItem {
+  name: string;
+  department: string;
+  interests: string;
+  scheduleDate: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -52,6 +59,7 @@ export class HomeComponent implements OnInit {
   matchingInterests: string[] = [];
   requests: MatchRequest[] = [];
   pendingRequests: PendingRequest[] = [];
+  matchHistory: HistoryItem[] = [];
 
   constructor(public userService: UserService, private router: Router) {}
 
@@ -71,6 +79,13 @@ export class HomeComponent implements OnInit {
       this.pendingRequests = this.generateSamplePendingRequests();
       this.savePendingRequests();
     }
+
+    const historyStored = localStorage.getItem('matchHistory');
+    if (historyStored) {
+      this.matchHistory = JSON.parse(historyStored);
+    }
+
+    this.updateHistory();
   }
 
   setTab(tab: string) {
@@ -133,6 +148,7 @@ export class HomeComponent implements OnInit {
   setSchedule(req: MatchRequest, date: string) {
     req.scheduledDate = date;
     this.saveRequests();
+    this.updateHistory();
   }
 
   denyRequest(index: number) {
@@ -148,6 +164,34 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('pendingRequests', JSON.stringify(this.pendingRequests));
   }
 
+  private saveHistory() {
+    localStorage.setItem('matchHistory', JSON.stringify(this.matchHistory));
+  }
+
+  private updateHistory() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const seen = new Set(this.matchHistory.map(h => `${h.name}-${h.scheduleDate}`));
+
+    const check = (name: string, department: string, interests: string, date?: string) => {
+      if (!date) { return; }
+      const d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+      if (d < today) {
+        const key = `${name}-${date}`;
+        if (!seen.has(key)) {
+          this.matchHistory.push({ name, department, interests, scheduleDate: date });
+          seen.add(key);
+        }
+      }
+    };
+
+    this.requests.forEach(r => check(r.name, r.department, r.interests, r.scheduledDate));
+    this.pendingRequests.forEach(p => check(p.name, p.department, p.interests, p.scheduleDate));
+
+    this.saveHistory();
+  }
+
   setPendingStatus(req: PendingRequest, status: 'accepted' | 'scheduled') {
     req.status = status;
     this.savePendingRequests();
@@ -157,6 +201,7 @@ export class HomeComponent implements OnInit {
     req.scheduleDate = date;
     req.status = 'scheduled';
     this.savePendingRequests();
+    this.updateHistory();
   }
 
   private generateSampleRequests(): MatchRequest[] {
