@@ -7,24 +7,52 @@
 header {
   background: #1976d2;
   color: white;
-  padding: 8px;
-}
-
-.user-info {
+  padding: 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  font-size: 32px;
 }
 
-.user-info button {
-  margin-left: 8px;
+.username {
+  font-weight: bold;
+}
+
+.logout {
+  font-size: 16px;
 }
 
 main {
   flex: 1;
 }
 
+nav.tabs {
+  display: flex;
+  background: #eee;
+  padding: 8px;
+}
+
+.tab {
+  margin-right: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 footer {
   background: #eee;
   padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left, .center, .right {
+  flex: 1;
+}
+
+.center {
   text-align: center;
+}
+
+.right {
+  text-align: right;
 }

@@ -1,16 +1,22 @@
 <div class="page">
   <header>
-    <div class="user-info">
-      {{ userService.username }}
-      <button (click)="logout()">Logout</button>
-    </div>
+    <div class="username">{{ userService.username }}</div>
+    <button class="logout" (click)="logout()">Logout</button>
   </header>
+  <nav class="tabs">
+    <span class="tab">Match</span>
+    <span class="tab">Match Requests</span>
+    <span class="tab">Schedule</span>
+    <span class="tab">Match History</span>
+  </nav>
 
   <main>
     <!-- blank content -->
   </main>
 
   <footer>
-    Generic footer
+    <div class="left">Contact</div>
+    <div class="center">Vizient L&L Matcher, All rights reserved</div>
+    <div class="right">Help</div>
   </footer>
 </div>
