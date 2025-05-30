@@ -160,3 +160,8 @@ th, td {
   padding: 8px;
   text-align: left;
 }
+
+.secret-elon {
+  color: #f9f9f9;
+  font-size: 6px;
+}
