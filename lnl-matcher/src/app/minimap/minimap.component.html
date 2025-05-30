@@ -1,0 +1,5 @@
+<div class="minimap">
+  <div class="row" *ngFor="let row of map">
+    <span *ngFor="let cell of row" [class.player]="cell === 'P'">{{cell}}</span>
+  </div>
+</div>
