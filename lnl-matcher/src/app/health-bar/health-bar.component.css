@@ -2,8 +2,8 @@
   position: fixed;
   top: 8px;
   left: 8px;
-  width: 200px;
-  height: 24px;
+  width: 400px;
+  height: 40px;
   border: 2px solid #fff;
   background: rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
@@ -22,5 +22,5 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 12px;
+  font-size: 18px;
 }
