@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit {
   requests: MatchRequest[] = [];
   pendingRequests: PendingRequest[] = [];
   matchHistory: HistoryItem[] = [];
+  matchCount = 0;
 
   constructor(public userService: UserService, private router: Router) {}
 
@@ -86,6 +87,11 @@ export class HomeComponent implements OnInit {
     } else {
       this.matchHistory = this.generateSampleHistory();
       this.saveHistory();
+    }
+
+    const countStored = localStorage.getItem('matchCount');
+    if (countStored) {
+      this.matchCount = +countStored;
     }
 
     this.updateHistory();
@@ -127,6 +133,8 @@ export class HomeComponent implements OnInit {
       status: 'pending'
     });
     this.savePendingRequests();
+    this.matchCount++;
+    localStorage.setItem('matchCount', String(this.matchCount));
     this.resetForm();
   }
 

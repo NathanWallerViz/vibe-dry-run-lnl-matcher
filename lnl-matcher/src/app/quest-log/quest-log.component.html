@@ -1,0 +1,6 @@
+<div class="quest-log">
+  <h3>Quest Log</h3>
+  <ul>
+    <li *ngFor="let q of quests">{{ q.title }} - {{ progress(q) }}</li>
+  </ul>
+</div>
