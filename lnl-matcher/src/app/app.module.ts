@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { QuestLogComponent } from './quest-log/quest-log.component';
+import { CompassComponent } from './compass/compass.component';
+import { HealthBarComponent } from './health-bar/health-bar.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    QuestLogComponent
+    QuestLogComponent,
+    CompassComponent,
+    HealthBarComponent
   ],
   imports: [
     BrowserModule,

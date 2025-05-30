@@ -1,0 +1,26 @@
+.health-container {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: 200px;
+  height: 24px;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.health {
+  height: 100%;
+  background: #e53935;
+}
+
+.health-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 12px;
+}
