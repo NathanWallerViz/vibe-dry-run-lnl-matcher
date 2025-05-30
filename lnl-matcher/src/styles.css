@@ -17,3 +17,19 @@ body::before {
   pointer-events: none;
   z-index: -1;
 }
+
+.flames {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  pointer-events: none;
+  animation: flicker 0.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-2px); }
+}
