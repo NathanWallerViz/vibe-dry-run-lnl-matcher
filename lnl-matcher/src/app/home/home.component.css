@@ -85,6 +85,31 @@ footer {
   margin-top: 24px;
 }
 
+.clippy {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.clippy img {
+  width: 64px;
+  height: 64px;
+}
+
+.clippy .bubble {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  max-width: 200px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  font-size: 14px;
+}
+
 .match-card label {
   display: flex;
   flex-direction: column;
