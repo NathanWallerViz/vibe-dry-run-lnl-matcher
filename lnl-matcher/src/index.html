@@ -9,6 +9,37 @@
 </head>
 <body>
   <app-root></app-root>
-  <div class="flames">🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const flameCount = 30;
+      for (let i = 0; i < flameCount; i++) {
+        const flame = document.createElement('div');
+        flame.textContent = '🔥';
+        flame.classList.add('flame');
+        flame.style.left = Math.random() * 100 + 'vw';
+        flame.style.top = Math.random() * 100 + 'vh';
+        document.body.appendChild(flame);
+      }
+
+      const comments = [
+        "Uh oh... is it just me or is it getting hot in here?",
+        "I'm starting to feel the heat!",
+        "These flames are everywhere!",
+        "Why does it smell like smoke?"
+      ];
+
+      setInterval(() => {
+        if (Math.random() < 0.3) {
+          const comment = document.createElement('div');
+          comment.textContent = comments[Math.floor(Math.random() * comments.length)];
+          comment.classList.add('heat-comment');
+          comment.style.left = (10 + Math.random() * 80) + 'vw';
+          comment.style.top = Math.random() * 80 + 'vh';
+          document.body.appendChild(comment);
+          setTimeout(() => comment.remove(), 4000);
+        }
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
