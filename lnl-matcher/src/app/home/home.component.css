@@ -95,19 +95,20 @@ footer {
   z-index: 1000;
 }
 
+
 .clippy img {
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
 }
 
 .clippy .bubble {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 8px;
-  max-width: 200px;
+  padding: 12px;
+  max-width: 300px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  font-size: 14px;
+  font-size: 24px;
 }
 
 .match-card label {

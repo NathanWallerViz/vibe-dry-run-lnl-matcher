@@ -3,8 +3,8 @@
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
@@ -15,7 +15,7 @@
 }
 
 .needle {
-  font-size: 32px;
+  font-size: 64px;
   animation: spin 5s linear infinite;
 }
 
