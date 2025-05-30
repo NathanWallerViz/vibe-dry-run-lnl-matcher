@@ -39,6 +39,28 @@
           setTimeout(() => comment.remove(), 4000);
         }
       }, 3000);
+
+      // === Fun mouse interactions ===
+      const cat = document.createElement('div');
+      cat.textContent = '🐱';
+      cat.classList.add('cat-cursor');
+      document.body.appendChild(cat);
+
+      document.addEventListener('mousemove', (e) => {
+        cat.style.left = e.clientX + 'px';
+        cat.style.top = e.clientY + 'px';
+      });
+
+      const emojis = ['😎', '🚀', '🎉', '✨', '🔥', '😺', '😸'];
+      document.addEventListener('click', (e) => {
+        const el = document.createElement('div');
+        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        el.classList.add('click-emoji');
+        el.style.left = e.clientX + 'px';
+        el.style.top = e.clientY + 'px';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1000);
+      });
     });
   </script>
 </body>

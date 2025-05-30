@@ -51,3 +51,25 @@ body::before {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+.cat-cursor {
+  position: fixed;
+  font-size: 24px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.click-emoji {
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: pop 1s forwards;
+  z-index: 999;
+}
+
+@keyframes pop {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -80%) scale(1.5); }
+}
