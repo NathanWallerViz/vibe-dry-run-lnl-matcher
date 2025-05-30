@@ -16,7 +16,8 @@
 
 .needle {
   font-size: 64px;
-  animation: spin 5s linear infinite;
+  color: red;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
