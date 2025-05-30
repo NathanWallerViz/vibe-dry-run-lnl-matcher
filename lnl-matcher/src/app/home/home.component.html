@@ -8,6 +8,7 @@
     <span class="tab" (click)="setTab('Match Requests')">Requests 📬</span>
     <span class="tab" (click)="setTab('Pending Requests')">Pending ⏳</span>
     <span class="tab" (click)="setTab('Match History')">History 📜</span>
+    <span class="tab" (click)="setTab('Creed Tribute Page')">Creed Tribute Page 🎸</span>
   </nav>
 
   <main>
@@ -130,6 +131,23 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div *ngIf="activeTab === 'Creed Tribute Page'" class="match-card">
+      <h2>Creed Tribute Page</h2>
+      <p>Sponsored by Monster Energy Drinks ☕️</p>
+      <h3>Band Facts</h3>
+      <ul>
+        <li>Creed formed in Tallahassee, Florida in 1994.</li>
+        <li>Members include Scott Stapp, Mark Tremonti, Brian Marshall, and Scott Phillips.</li>
+        <li>Their breakthrough album was <em>Human Clay</em> in 1999.</li>
+      </ul>
+      <h3>Motivational Lyrics</h3>
+      <blockquote>"With arms wide open, under the sunlight."</blockquote>
+      <blockquote>"Higher, can you take me higher?"</blockquote>
+      <h3>Merch</h3>
+      <p>Grab official Creed T-shirts and crocs <a href="#">here</a>!</p>
+      <div style="text-align:center; margin-top:16px; font-weight:bold;">Hi Sal</div>
     </div>
   </main>
 
