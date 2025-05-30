@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { QuestLogComponent } from './quest-log/quest-log.component';
 import { CompassComponent } from './compass/compass.component';
 import { HealthBarComponent } from './health-bar/health-bar.component';
+import { MinimapComponent } from './minimap/minimap.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     HomeComponent,
     QuestLogComponent,
     CompassComponent,
-    HealthBarComponent
+    HealthBarComponent,
+    MinimapComponent
   ],
   imports: [
     BrowserModule,
